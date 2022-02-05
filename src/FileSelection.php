@@ -16,9 +16,9 @@ class FileSelection
     protected bool $shouldFollowLinks = false;
     protected bool $shouldIgnoreUnreadableDirs = false;
 
-    public static function create(array|string $includeFilesAndDirectories = []): self
+    public static function create(array|string $includeFilesAndDirectories = [])
     {
-        return new static($includeFilesAndDirectories);
+        return new self($includeFilesAndDirectories);
     }
 
     public function __construct(array|string $includeFilesAndDirectories = [])
@@ -28,7 +28,7 @@ class FileSelection
         $this->excludeFilesAndDirectories = collect();
     }
 
-    public function excludeFilesFrom(array|string $excludeFilesAndDirectories): self
+    public function excludeFilesFrom(array|string $excludeFilesAndDirectories): static
     {
         $this->excludeFilesAndDirectories = $this->excludeFilesAndDirectories->merge(
             $this->sanitize($excludeFilesAndDirectories)
@@ -37,14 +37,14 @@ class FileSelection
         return $this;
     }
 
-    public function shouldFollowLinks(bool $shouldFollowLinks): self
+    public function shouldFollowLinks(bool $shouldFollowLinks): static
     {
         $this->shouldFollowLinks = $shouldFollowLinks;
 
         return $this;
     }
 
-    public function shouldIgnoreUnreadableDirs(bool $ignoreUnreadableDirs = true): self
+    public function shouldIgnoreUnreadableDirs(bool $ignoreUnreadableDirs = true): static
     {
         $this->shouldIgnoreUnreadableDirs = $ignoreUnreadableDirs;
 
