@@ -2,9 +2,9 @@
 
 namespace AliSaleem\Evaporator;
 
+use AliSaleem\Evaporator\Commands\UploadCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use AliSaleem\Evaporator\Commands\UploadCommand;
 
 class EvaporatorServiceProvider extends PackageServiceProvider
 {

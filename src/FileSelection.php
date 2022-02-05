@@ -73,7 +73,7 @@ class FileSelection
             yield $includedFile;
         }
 
-        if (!count($this->includedDirectories())) {
+        if (! count($this->includedDirectories())) {
             return [];
         }
 
@@ -92,14 +92,14 @@ class FileSelection
     {
         return $this
             ->includeFilesAndDirectories
-            ->filter(fn($path) => is_file($path))->toArray();
+            ->filter(fn ($path) => is_file($path))->toArray();
     }
 
     protected function includedDirectories(): array
     {
         return $this
             ->includeFilesAndDirectories
-            ->reject(fn($path) => is_file($path))->toArray();
+            ->reject(fn ($path) => is_file($path))->toArray();
     }
 
     protected function shouldExclude(string $path): bool
@@ -124,10 +124,10 @@ class FileSelection
     protected function sanitize(string|array $paths): Collection
     {
         return collect($paths)
-            ->reject(fn($path) => $path === '')
-            ->flatMap(fn($path) => $this->getMatchingPaths($path))
-            ->map(fn($path) => realpath($path))
-            ->reject(fn($path) => $path === false);
+            ->reject(fn ($path) => $path === '')
+            ->flatMap(fn ($path) => $this->getMatchingPaths($path))
+            ->map(fn ($path) => realpath($path))
+            ->reject(fn ($path) => $path === false);
     }
 
     protected function getMatchingPaths(string $path): array

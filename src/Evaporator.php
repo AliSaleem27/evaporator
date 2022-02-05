@@ -23,7 +23,7 @@ class Evaporator
                 ->ltrim('/')
                 ->prepend(rtrim($this->prefixPath, '/').'/');
 
-            $basename  = pathinfo($relativePath, PATHINFO_BASENAME);
+            $basename = pathinfo($relativePath, PATHINFO_BASENAME);
             $directory = pathinfo($relativePath, PATHINFO_DIRNAME);
 
             echo "$directory.$basename".PHP_EOL;
